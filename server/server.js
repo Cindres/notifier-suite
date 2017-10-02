@@ -15,7 +15,6 @@ server.get('/ping', (request, response) => {
 });
 
 server.post('/notification', (request, response) => {
-  console.log(request.body);
   const validationResult = validateRequest(request.body);
 
   if (validationResult.pass) {
