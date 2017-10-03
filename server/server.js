@@ -16,15 +16,15 @@ server.get('/ping', (request, response) => {
 });
 
 server.post('/notification', (request, response) => {
-  const validationResult = validateRequest(request.body);
 
+  const validationResult = validateRequest(request.body);
+  
   if (validationResult.pass) {
     notifier.notify(request.body.message);
     response.status(200).end();
   } else {
     response.status(400).send(validationResult.reason);
-  }
-  
+  }  
 });
 
 //Start the server

@@ -30,7 +30,7 @@ rtm.on(RTM_EVENTS.MESSAGE, (message) => {
   }
 
   if (sender === ME) {
-    //return;
+    return;
   }
 
   //Note on message IDs:
@@ -38,9 +38,9 @@ rtm.on(RTM_EVENTS.MESSAGE, (message) => {
     // D, it's a DM with the user
     // G, it's either a private channel or multi-person DM
   if (channelId.charAt(0) === 'D') {
-    httpUtils.sendNotification('Direct Message from ' + sender);
+    httpUtils.sendNotification(['Slack', 'Direct Message', sender]);
   } else {
-    httpUtils.sendNotification('Channel Message ' + channels[channelId]);
+    httpUtils.sendNotification(['Slack', 'Channel Message ', channels[channelId]]);
   }
 });
 

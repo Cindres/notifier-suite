@@ -6,7 +6,7 @@ const notify = (message) => {
   clearTimeout(notificationTimeout);
   
   display.lightsOn();
-  display.write(message);
+  display.writeLines(message);
   notificationTimeout = setTimeout(() => {
     display.lightsOff();
     display.clear();
