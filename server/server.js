@@ -2,6 +2,7 @@ const bodyParser = require('body-parser');
 const express = require('express');
 
 const validateRequest = require('./requestValidator');
+const display = require('./display');
 
 const server = express();
 
@@ -18,6 +19,7 @@ server.post('/notification', (request, response) => {
   const validationResult = validateRequest(request.body);
 
   if (validationResult.pass) {
+    display.write(request.body.message);
     response.status(200).end();
   } else {
     response.status(400).send(validationResult.reason);

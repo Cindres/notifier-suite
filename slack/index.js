@@ -30,7 +30,7 @@ rtm.on(RTM_EVENTS.MESSAGE, (message) => {
   }
 
   if (sender === ME) {
-    return;
+    //return;
   }
 
   //Note on message IDs:
