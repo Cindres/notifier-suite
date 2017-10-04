@@ -10,7 +10,10 @@ const sendNotification = (message) => {
     body: JSON.stringify({source: 'slack', message})
   },
   (err, response, body) => {
-    if (response.statusCode != 200) {
+    if (err) {
+      console.log('Error sending notification');
+      console.log(err)
+    } else if (response.statusCode != 200) {
       console.log(body);
     }
   })

@@ -17,6 +17,8 @@ server.get('/ping', (request, response) => {
 
 server.post('/notification', (request, response) => {
 
+  console.log(request.body);
+
   const validationResult = validateRequest(request.body);
   
   if (validationResult.pass) {
@@ -30,4 +32,5 @@ server.post('/notification', (request, response) => {
 //Start the server
 server.listen('8080', () => {
   console.log('Server listening on port 8080');
+  notifier.notify(['Starting...', '', '']);
 });

@@ -9,7 +9,9 @@ const WebClient = Slack.WebClient;
 
 const web = new WebClient(token);
 const rtm = new RtmClient(token, { logLevel: 'info' });
+
 const ME = 'amatthews';
+const HEADER = '-----SLACK------'
 
 let channels = {};
 let users = {};
@@ -38,9 +40,9 @@ rtm.on(RTM_EVENTS.MESSAGE, (message) => {
     // D, it's a DM with the user
     // G, it's either a private channel or multi-person DM
   if (channelId.charAt(0) === 'D') {
-    httpUtils.sendNotification(['Slack', 'Direct Message', sender]);
+    httpUtils.sendNotification([HEADER, 'Direct Message', sender]);
   } else {
-    httpUtils.sendNotification(['Slack', 'Channel Message ', channels[channelId]]);
+    httpUtils.sendNotification([HEADER, 'Channel Message', channels[channelId]]);
   }
 });
 
